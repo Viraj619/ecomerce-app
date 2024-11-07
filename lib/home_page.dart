@@ -32,14 +32,14 @@ class HomePageState extends State<HomePage>{
               child: Column(
                 children: [
                   /// search bar
-                  ButtonCoustomPage(width: 400.00, height: 40.00, color:Colors.grey.withOpacity(0.2), child: Row(
+                  ButtonCoustomPage(width: MediaQuery.of(context).size.width*0.8, height: 40.00, color:Colors.grey.withOpacity(0.2), child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SizedBox(width: 20,),
+                      //SizedBox(width: 20,),
                       Icon(Icons.search,size: 20,),
-                      SizedBox(width: 30,),
+                     // SizedBox(width: MediaQuery.of(context).size.width*0.2,),
                       Container(
-                        width: 180,
+                        width:MediaQuery.of(context).size.width*0.4,
                         height: 50,
                         child: TextField(
                           controller: searchController,
@@ -62,38 +62,40 @@ class HomePageState extends State<HomePage>{
                   )),
                   /// card
                   SizedBox(
-                    width: 350,
-                    height: 200,
+                    width: MediaQuery.of(context).size.width*0.8,
+                    height:MediaQuery.of(context).size.width*0.4,
                     child: Card(
                       elevation: 4,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(11)
                       ),
-                      child: Container(
-                        width: 350,
-                        height: 200,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(image: NetworkImage("https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=600"),
-                                fit:BoxFit.cover),
-                          borderRadius: BorderRadius.circular(11)
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            crossAxisAlignment:CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: 20,),
-                              Text("Super Sale",style: mTextStyle20(),),
-                              Text("Discount",style: mTextStyle20(),),
-                              Row(
-                                children: [
-                                  Text("Up to",style: mTextStyle13(),),
-                                  Text("50%",style: mTextStyle25(),)
-                                ],
-                              ),
-                              SizedBox(height: 20,),
-                              ButtonCoustomPage(width: 100.00, height: 30.00, color:Colors.orangeAccent, child: Center(child: Text("Shop now",style: mTextStyle15(mFontColor: Colors.white,mFontWeigh: FontWeight.normal),)))
-                            ],
+                      child: FittedBox(
+                        child: Container(
+                          width: 450,
+                          height: 220,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(image: NetworkImage("https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=600"),
+                                  fit:BoxFit.cover),
+                            borderRadius: BorderRadius.circular(11)
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              crossAxisAlignment:CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 20,),
+                                Text("Super Sale",style: mTextStyle20(),),
+                                Text("Discount",style: mTextStyle20(),),
+                                Row(
+                                  children: [
+                                    Text("Up to",style: mTextStyle13(),),
+                                    Text("50%",style: mTextStyle25(),)
+                                  ],
+                                ),
+                                SizedBox(height: 20,),
+                                ButtonCoustomPage(width: 100.00, height: 30.00, color:Colors.orangeAccent, child: Center(child: Text("Shop now",style: mTextStyle15(mFontColor: Colors.white,mFontWeigh: FontWeight.normal),)))
+                              ],
+                            ),
                           ),
                         ),
                       ),

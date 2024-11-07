@@ -99,5 +99,33 @@ class ButtonCoustomPage extends StatelessWidget{
   }
 }
 
+/// coustom TextField
+ class CoustomTextField{
+  static  coustomTextField(TextEditingController controller,String text){
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0,vertical: 15),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          hintText: text,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10)
+          )
+        ),
+      ),
+    );
+  }
+  /// coustom ElevatedButton
+static Button(VoidCallback callback,var child){
+    return ElevatedButton(onPressed: callback, child:child);
+}
+/// coustom textButton
+static textButton(VoidCallback callback,String text){
+    return InkWell(
+        onTap:callback,
+        child: Text(text));
+}
+}
+
 
 
