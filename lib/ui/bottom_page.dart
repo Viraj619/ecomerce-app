@@ -1,9 +1,9 @@
 
-import 'package:ecommerce/resources_page.dart';
+import 'package:ecommerce/ui_helper/resources_page.dart';
 import 'package:flutter/material.dart';
 
 import 'addind_page.dart';
-import 'coustom_card.dart';
+import '../ui_helper/coustom_card.dart';
 import 'home_page.dart';
 import 'mycart_page.dart';
 
@@ -32,11 +32,11 @@ class BottomState extends State<BottomPage>{
         title:  Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CircleCoustomPage(width: 40.00, height: 40.00, imgurl: "",color: Colors.grey.withOpacity(0.2),child: IconButton(onPressed: (){
+            CoustomPage(width: 40.00, height: 40.00,color: Colors.grey.withOpacity(0.2),child: IconButton(onPressed: (){
 
             }, icon: Icon(Icons.dashboard,size: 20,color: Colors.black,)),),
             SizedBox(width: 200,),
-            CircleCoustomPage(width: 40.00, height: 40.00, imgurl: "",color: Colors.grey.withOpacity(0.2),child: IconButton(onPressed: (){
+           CoustomPage(width: 40.00, height: 40.00,color: Colors.grey.withOpacity(0.2),child: IconButton(onPressed: (){
 
             }, icon: Icon(Icons.notifications,size: 20,color: Colors.black,)),),
           ],

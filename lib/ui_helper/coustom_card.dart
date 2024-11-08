@@ -40,7 +40,6 @@ class CoustomCard extends StatelessWidget{
 
 /// circle coustom
 class CircleCoustomPage extends StatelessWidget{
-
   var width;
   var height;
   var child;
@@ -58,6 +57,30 @@ class CircleCoustomPage extends StatelessWidget{
             color: color,
             shape: BoxShape.circle,
             image: DecorationImage(image:AssetImage(imgurl),fit: BoxFit.cover),
+          ),
+          child:child ,
+        ),
+      ],
+    );
+
+  }
+}
+class CoustomPage extends StatelessWidget{
+  var width;
+  var height;
+  var child;
+  var color=Colors.white;
+  CoustomPage({required this.width,required this.height, required this.color,required this.child});
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          width: width,
+          height: height,
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.circle,
           ),
           child:child ,
         ),

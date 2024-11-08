@@ -1,10 +1,10 @@
 
-import 'package:ecommerce/addind_page.dart';
-import 'package:ecommerce/bottom_page.dart';
-import 'package:ecommerce/coustom_card.dart';
-import 'package:ecommerce/home_page.dart';
-import 'package:ecommerce/login%20and%20singip%20pages/login_page.dart';
-import 'package:ecommerce/mycart_page.dart';
+import 'package:ecommerce/ui/addind_page.dart';
+import 'package:ecommerce/ui/bottom_page.dart';
+import 'package:ecommerce/ui_helper/coustom_card.dart';
+import 'package:ecommerce/ui/home_page.dart';
+import 'package:ecommerce/ui/mycart_page.dart';
+import 'package:ecommerce/ui/login%20and%20singip%20pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main(){

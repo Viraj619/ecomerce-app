@@ -1,4 +1,4 @@
-import 'package:ecommerce/coustom_card.dart';
+import 'package:ecommerce/ui_helper/coustom_card.dart';
 import 'package:flutter/material.dart';
 
 class SingupPage extends StatelessWidget{

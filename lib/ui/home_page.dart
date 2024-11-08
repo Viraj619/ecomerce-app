@@ -1,8 +1,8 @@
 
-import 'package:ecommerce/addind_page.dart';
-import 'package:ecommerce/coustom_card.dart';
-import 'package:ecommerce/mycart_page.dart';
-import 'package:ecommerce/resources_page.dart';
+import 'package:ecommerce/ui/addind_page.dart';
+import 'package:ecommerce/ui_helper/coustom_card.dart';
+import 'package:ecommerce/ui/mycart_page.dart';
+import 'package:ecommerce/ui_helper/resources_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -23,7 +23,6 @@ class HomePageState extends State<HomePage>{
     body: Container(
       width: double.infinity,
       height: double.infinity,
-
       child: Stack(
         children: [
           SingleChildScrollView(
@@ -32,7 +31,7 @@ class HomePageState extends State<HomePage>{
               child: Column(
                 children: [
                   /// search bar
-                  ButtonCoustomPage(width: MediaQuery.of(context).size.width*0.8, height: 40.00, color:Colors.grey.withOpacity(0.2), child: Row(
+                  ButtonCoustomPage(width: MediaQuery.of(context).size.width*0.9, height: 40.00, color:Colors.grey.withOpacity(0.2), child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       //SizedBox(width: 20,),
@@ -62,41 +61,36 @@ class HomePageState extends State<HomePage>{
                   )),
                   /// card
                   SizedBox(
-                    width: MediaQuery.of(context).size.width*0.8,
-                    height:MediaQuery.of(context).size.width*0.4,
+                    width: MediaQuery.of(context).size.width*10,
+                    //height:MediaQuery.of(context).size.height*0.3,
                     child: Card(
                       elevation: 4,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(11)
                       ),
-                      child: FittedBox(
-                        child: Container(
-                          width: 450,
-                          height: 220,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(image: NetworkImage("https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=600"),
-                                  fit:BoxFit.cover),
-                            borderRadius: BorderRadius.circular(11)
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              crossAxisAlignment:CrossAxisAlignment.start,
+                      child: Container(
+                        width:  MediaQuery.of(context).size.width*10,
+                       // height: MediaQuery.of(context).size.height*0.2,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(image: NetworkImage("https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=600"),
+                                fit:BoxFit.cover),
+                          borderRadius: BorderRadius.circular(11)
+                        ),
+                        child: Column(
+                          crossAxisAlignment:CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 20,),
+                            Text("Super Sale",style: mTextStyle20(),),
+                            Text("Discount",style: mTextStyle20(),),
+                            Row(
                               children: [
-                                SizedBox(height: 20,),
-                                Text("Super Sale",style: mTextStyle20(),),
-                                Text("Discount",style: mTextStyle20(),),
-                                Row(
-                                  children: [
-                                    Text("Up to",style: mTextStyle13(),),
-                                    Text("50%",style: mTextStyle25(),)
-                                  ],
-                                ),
-                                SizedBox(height: 20,),
-                                ButtonCoustomPage(width: 100.00, height: 30.00, color:Colors.orangeAccent, child: Center(child: Text("Shop now",style: mTextStyle15(mFontColor: Colors.white,mFontWeigh: FontWeight.normal),)))
+                                Text("Up to",style: mTextStyle13(),),
+                                Text("50%",style: mTextStyle25(),)
                               ],
                             ),
-                          ),
+                            SizedBox(height: 20,),
+                            ButtonCoustomPage(width: 100.00, height: 30.00, color:Colors.orangeAccent, child: Center(child: Text("Shop now",style: mTextStyle15(mFontColor: Colors.white,mFontWeigh: FontWeight.normal),)))
+                          ],
                         ),
                       ),
                     ),
@@ -147,6 +141,7 @@ class HomePageState extends State<HomePage>{
                     ),
                         itemCount: MColor.colorData.length,
                         itemBuilder: (_,index){
+
                       return InkWell(
                         onTap: (){
                           Navigator.push(context,MaterialPageRoute(builder: (context)=>AddindPage(aIndex: index)));
@@ -192,7 +187,7 @@ class HomePageState extends State<HomePage>{
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         Text("\$:${Names.nameData[index]['price']?? "default"}",style: mTextStyle16(),),
-                                        SizedBox(width: 10,),
+                                        SizedBox(width: 4,),
                                         Container(
                                           width: 20,
                                           height: 20,
@@ -213,7 +208,7 @@ class HomePageState extends State<HomePage>{
                                             ),
                                           ),
                                         ),
-                                        SizedBox(width: 5,),
+                                        SizedBox(width: 4,),
                                         Container(
                                           width: 20,
                                           height: 20,
@@ -224,7 +219,7 @@ class HomePageState extends State<HomePage>{
 
                                           ),
                                         ),
-                                        SizedBox(width: 5,),
+                                        SizedBox(width: 4,),
                                         Container(
                                           width: 20,
                                           height: 20,
