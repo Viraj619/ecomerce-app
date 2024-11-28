@@ -2,30 +2,57 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:ecommerce/remote/exception_page.dart';
+import 'package:ecommerce/ui_helper/resources_page.dart';
 import 'package:http/http.dart'as httpClient;
+import 'package:shared_preferences/shared_preferences.dart';
 class ApiHelper{
 
- Future<dynamic> getProduct({required String url})async{
-  var res=await httpClient.post(Uri.parse(url));
+ /// get api
+ Future<dynamic> getAPI({required String url,})async{
+  SharedPreferences pref=await SharedPreferences.getInstance();
+  String uid=pref.getString(Names.UID_KEY)??" ";
+  var res=await httpClient.get(Uri.parse(url),headers:{
+   "Authorization":"Bearer $uid"
+  });
   try{
    return returnResponse( res);
   }on SocketException catch (e){
-   throw FetchException(Error: "No Internet !!");
+   throw FetchException(mError: ' "No Internet !!"');
   }
  }
+
+ /// post api
+ Future<dynamic>postAPI({required String url,bool isRequiredHeader=true,
+  Map<String,String>?mHeaders,
+ Map<String,dynamic>?mBodyParams})async{
+  SharedPreferences pref=await SharedPreferences.getInstance();
+  String uid=  pref.getString(Names.UID_KEY)??" ";
+  var resPost=await httpClient.post(Uri.parse(url),
+      headers: isRequiredHeader?{
+   "Authorization":"Bearer $uid"
+      }:null,
+      body: mBodyParams!=null?jsonEncode(mBodyParams):null);
+  try{
+   return returnResponse(resPost);
+  }on SocketException catch(e){
+   FetchException(mError: "No Internet");
+  }
+ }
+
+ /// return response
  dynamic returnResponse(httpClient.Response response){
   switch(response.statusCode){
    case 200:
     var mData=jsonDecode(response.body);
     return mData;
    case 400:
-    throw BedRequestException(Error:response.body.toString());
+    throw BedRequestException(mError:response.body.toString(),);
    case 401:
    case 403:
-    throw UnauthorisedException(Error: response.body.toString());
+    throw UnauthorisedException(mError: response.body.toString());
    case 500:
     default:
-     throw FetchException(Error: "Error Occurred while communicating with statusCode${response.statusCode.toString()}");
+     throw FetchException(mError: "Error Occurred while communicating with statusCode${response.statusCode.toString()}");
   }
  }
 }

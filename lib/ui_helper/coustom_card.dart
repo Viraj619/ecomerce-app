@@ -25,8 +25,8 @@ class CoustomCard extends StatelessWidget{
                         width:350,
                         height: 150,
                         decoration: BoxDecoration(
-                          image: DecorationImage(image: AssetImage(imgurl),
-                            fit: BoxFit.cover,)
+                          image: DecorationImage(image: NetworkImage(imgurl),
+                            )
                         ),
                     ),
                   ],
@@ -56,7 +56,7 @@ class CircleCoustomPage extends StatelessWidget{
           decoration: BoxDecoration(
             color: color,
             shape: BoxShape.circle,
-            image: DecorationImage(image:AssetImage(imgurl),fit: BoxFit.cover),
+            image: DecorationImage(image:AssetImage(imgurl),),
           ),
           child:child ,
         ),
@@ -124,13 +124,14 @@ class ButtonCoustomPage extends StatelessWidget{
 
 /// coustom TextField
  class CoustomTextField{
-  static  coustomTextField(TextEditingController controller,String text){
+  static  coustomTextField(TextEditingController controller,String text,var child,){
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0,vertical: 15),
-      child: TextField(
+      child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
           hintText: text,
+          suffixIcon: child,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10)
           )
@@ -139,8 +140,8 @@ class ButtonCoustomPage extends StatelessWidget{
     );
   }
   /// coustom ElevatedButton
-static Button(VoidCallback callback,var child){
-    return ElevatedButton(onPressed: callback, child:child);
+static Button(VoidCallback callback,var child,){
+    return ElevatedButton(onPressed: callback,style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),child:child);
 }
 /// coustom textButton
 static textButton(VoidCallback callback,String text){
@@ -148,6 +149,62 @@ static textButton(VoidCallback callback,String text){
         onTap:callback,
         child: Text(text));
 }
+}
+
+class MyTextFormField extends StatelessWidget{
+  String? Function(String?)validation;
+  String  hintText;
+   TextEditingController textEditingController=TextEditingController();
+  bool isVisible;
+  var child;
+  String obscuringCharacter;
+
+  MyTextFormField({required this.validation,this.obscuringCharacter="*",required this.textEditingController,required this.hintText, this.isVisible=false,required this.child});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0,vertical: 15),
+      child: TextFormField(
+        validator: validation,
+        controller: textEditingController,
+        obscureText:isVisible!,
+        obscuringCharacter:obscuringCharacter,
+        decoration: InputDecoration(
+          hintText: hintText,
+            suffixIcon:child,
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10)
+            )
+        ),
+
+      ),
+    );
+  }
+}
+
+class CoustomContainer extends StatelessWidget{
+  var child;
+  var child1;
+  CoustomContainer({required this.child,required this.child1});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+          child,child1,
+        ],),
+      ),
+    );
+  }
 }
 
 

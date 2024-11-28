@@ -69,6 +69,9 @@ class MColor{
 }
 
 class Names{
+
+  static String UID_KEY='Uid';
+
   static List<Map<String,dynamic>> nameData=[{
     'image':'asserts/icons/ic_shoes.png',
     'name':'Shoes',
